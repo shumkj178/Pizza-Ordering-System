@@ -37,13 +37,16 @@ public abstract class Customer {
 	 */
 	public Customer(String name, String mobileNumber, int locationX, int locationY, String type) throws CustomerException{
 		// TO DO
-		if (name.trim().isEmpty() || mobileNumber.trim().isEmpty() || type.trim().isEmpty()) {
-			throw new CustomerException("");
+		String regexStr = "^[0-9]*$";
+		if (name.trim().isEmpty() || mobileNumber.trim().isEmpty()) {
+			throw new CustomerException("Name and mobile number cannot be empty!");
 		} else if (name.trim().length() > 20) {
-			throw new CustomerException("");
-		} else if (!mobileNumber.startsWith("0") || mobileNumber.length() != 10) {
-			throw new CustomerException("");
-		} 
+			throw new CustomerException("Name must be shorter than 20 characters!");
+		} else if (!mobileNumber.startsWith("0") || mobileNumber.length() != 10 || !mobileNumber.matches(regexStr)) {
+			throw new CustomerException("Invalid mobile number format!");
+		} else if (locationX > 10 || locationY > 10) {
+			throw new CustomerException("Location X and Y must not exceed 10!");
+		}
 		this.name = name.trim();
 		this.mobileNumber = mobileNumber.trim();
 		this.locationX = locationX;

@@ -44,9 +44,8 @@ public class DriverDeliveryCustomer extends Customer {
 	 * @return The distance between the restaurant and the customer in Manhattan distance.
 	 */
 	@Override
-	public double getDeliveryDistance() {
-		double distance = 0;
-		
+	public double getDeliveryDistance() {		
+		double distance = Math.abs(getLocationX() - 0) + Math.abs(getLocationY() - 0);
 		return distance;
 	}
 

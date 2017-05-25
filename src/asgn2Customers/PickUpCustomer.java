@@ -28,7 +28,7 @@ public class PickUpCustomer extends Customer {
 	 */
 	public PickUpCustomer(String name, String mobileNumber, int locationX,  int locationY) throws CustomerException {
 		// TO DO
-		super(name, mobileNumber, locationX, locationY, "Pick Up");
+		super(name, mobileNumber, 0, 0, "Pick Up");
 	}
 
 	/**

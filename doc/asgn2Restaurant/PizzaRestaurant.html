@@ -266,13 +266,13 @@ extends java.lang.Object</pre>
  The other classes that the method interacts with are listed in Section 11 of the specification document. 
 
  <P> PRE: TRUE
- <P>POST: If no exception is thrown then the customers and pizzas fields are populated with the details in the log file ordered as they appear in teh log file.
+ <P>POST: If no exception is thrown then the customers and pizzas fields are populated with the details in the log file ordered as they appear in the log file.
  <P>      If an exception is thrown then the customers and pizzas fields should be empty.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>filename</code> - The log's filename</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>true if the file was process correctly otherwise false</dd>
+<dd>true if the file was processed correctly</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>CustomerException</code> - If the log file contains semantic errors leading that violate the customer constraints listed in Section 5.3 of the Assignment Specification or contain an invalid customer code (passed by another class).</dd>
 <dd><code>PizzaException</code> - If the log file contains semantic errors leading that violate the pizza constraints listed in Section 5.3 of the Assignment Specification or contain an invalid pizza code (passed by another class).</dd>

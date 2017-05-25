@@ -12,6 +12,11 @@ import asgn2Exceptions.CustomerException;
 */
 public abstract class Customer {
 
+	String name;
+	String mobileNumber;
+	int locationX;
+	int locationY;
+	String type;
 
 	/**
 	 *  This class represents a customer of the Pizza Palace restaurant.  A detailed description of the class's fields
@@ -32,6 +37,18 @@ public abstract class Customer {
 	 */
 	public Customer(String name, String mobileNumber, int locationX, int locationY, String type) throws CustomerException{
 		// TO DO
+		if (name.trim().isEmpty() || mobileNumber.trim().isEmpty() || type.trim().isEmpty()) {
+			throw new CustomerException("");
+		} else if (name.trim().length() > 20) {
+			throw new CustomerException("");
+		} else if (!mobileNumber.startsWith("0") || mobileNumber.length() != 10) {
+			throw new CustomerException("");
+		} 
+		this.name = name.trim();
+		this.mobileNumber = mobileNumber.trim();
+		this.locationX = locationX;
+		this.locationY = locationY;
+		this.type = type;
 	}
 	
 	/**
@@ -40,6 +57,7 @@ public abstract class Customer {
 	 */
 	public final String getName(){
 		// TO DO
+		return name;
 	}
 	
 	/**
@@ -48,6 +66,7 @@ public abstract class Customer {
 	 */
 	public final String getMobileNumber(){
 		// TO DO
+		return mobileNumber;
 	}
 
 	/**
@@ -57,6 +76,7 @@ public abstract class Customer {
 	 */
 	public final String getCustomerType(){
 		// TO DO
+		return type;
 	}
 	
 	/**
@@ -66,6 +86,7 @@ public abstract class Customer {
 	 */
 	public final int getLocationX(){
 		// TO DO
+		return locationX;
 	}
 
 	/**
@@ -75,6 +96,7 @@ public abstract class Customer {
 	 */
 	public final int getLocationY(){
 		// TO DO
+		return locationY;
 	}
 
 	/**

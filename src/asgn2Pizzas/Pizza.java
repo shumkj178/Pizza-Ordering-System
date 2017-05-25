@@ -14,7 +14,6 @@ import java.time.LocalTime;
  */
 public abstract class Pizza  {
 	
-		
 	/**
 	 *  This class represents a pizza produced at the Pizza Palace restaurant.  A detailed description of the class's fields
 	 *  and parameters is provided in the Assignment Specification, in particular in Section 5.1. 
@@ -37,7 +36,7 @@ public abstract class Pizza  {
 	}
 
 	/**
-	 * Calculates how much a pizza would could to make calculated from its toppings.
+	 * Calculates how much a pizza would cost to make calculated from its toppings.
 	 *  
      * <P> PRE: TRUE
 	 * <P> POST: The cost field is set to sum of the Pizzas's toppings
@@ -139,3 +138,4 @@ public abstract class Pizza  {
 
 	
 }
+>>>>>>> refs/heads/master

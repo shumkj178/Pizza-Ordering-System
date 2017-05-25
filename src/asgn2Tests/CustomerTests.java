@@ -139,14 +139,14 @@ public class CustomerTests {
 	}
 
 	@Test 
-	public void testGetDeliveryDistanceForDroneCustomer() throws CustomerException {
-		assertEquals(5, DNC.getDeliveryDistance(), 0); 
+	public void testGetDeliveryDistanceForDroneDeliveryCustomer() throws CustomerException {
+		assertEquals(5.0, DNC.getDeliveryDistance(), 0.0); 
 		
 	}
 	
 	@Test 
-	public void testGetDeliveryDistanceForDriverCustomer() throws CustomerException {
-		assertEquals(5, DVC.getDeliveryDistance(), 0); 
+	public void testGetDeliveryDistanceForDriverDeliveryCustomer() throws CustomerException {
+		assertEquals(7.0, DVC.getDeliveryDistance(), 0.0); 
 		
 	}
 	

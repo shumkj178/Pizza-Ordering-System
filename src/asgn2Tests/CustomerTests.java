@@ -23,62 +23,123 @@ import asgn2Customers.DroneDeliveryCustomer;
  *
  */
 public class CustomerTests {
-	// TO DO
 	Customer DVC; 
 	Customer DNC; 
 	Customer PUC; 
 	
 	@Before 
 	public void Initialize() throws CustomerException {
-		DVC = new DriverDeliveryCustomer ("Sean", "0402024300", 5, 6);
-		DNC = new DroneDeliveryCustomer ("Gary", "0472774229", 4, -4);
+		DVC = new DriverDeliveryCustomer ("Sean", "0402024300", 4, 3);
+		DNC = new DroneDeliveryCustomer ("Gary", "0472774229", 4, 3);
 		PUC = new PickUpCustomer ("Kelok", "0423241145", 0, 0);
 		
 	}
 	
 	@Test (expected = CustomerException.class)
 	public void testConstructorNameMoreThan20Digits() throws CustomerException {
-		DVC = new DriverDeliveryCustomer ("Uvuvwevwevwe Onyetenyevwe Ossas", "0214252252", 5, 6); 
+		DVC = new DriverDeliveryCustomer ("Uvuvwevwevwe Onyetenyevwe Ossas", "0214252252", 4, 3); 
 		
 	}
 	
 	@Test (expected = CustomerException.class)
 	public void testConstructorNameForBlankSpace() throws CustomerException {
-		DVC = new DriverDeliveryCustomer (" ", "0898989898", 5, 6);
+		DVC = new DriverDeliveryCustomer (" ", "0898989898", 4, 3);
 		
 	}
 	
 	@Test (expected = CustomerException.class)
 	public void testConstructorNameForEmptyString() throws CustomerException {
-		DVC = new DriverDeliveryCustomer ("", "0898989898", 5, 6);
+		DVC = new DriverDeliveryCustomer ("", "0898989898", 4, 3);
 		
 	}
 	
 	@Test (expected = CustomerException.class)
 	public void testConstructorMobileNumberStartWithDigit1() throws CustomerException {
-		DVC = new DriverDeliveryCustomer ("Sean", "1234567890", 5, 6);
+		DVC = new DriverDeliveryCustomer ("Sean", "1234567890", 4, 3);
 		
 	}
 		
 	@Test (expected = CustomerException.class)
 	public void testConstructorMobileNumberLessThan10Digits() throws CustomerException {
-		DVC = new DriverDeliveryCustomer ("Sean", "023456789", 5, 6);
+		DVC = new DriverDeliveryCustomer ("Sean", "023456789", 4, 3);
 			
 	}
 	
 	@Test (expected = CustomerException.class)
 	public void testConstructorMobileNumberMoreThan10Digits() throws CustomerException {
-		DVC = new DriverDeliveryCustomer ("Sean", "02345678910", 5, 6);
+		DVC = new DriverDeliveryCustomer ("Sean", "02345678910", 4, 3);
+			
+	}
+	
+	@Test (expected = CustomerException.class)
+	public void testConstructorMobileNumberWithSymbol() throws CustomerException {
+		DVC = new DriverDeliveryCustomer ("Sean", "0563832@4^", 4, 3);
 			
 	}
 	
 	
+	@Test (expected = CustomerException.class) 
+	public void testConstructorForLocationXMoreThan10() throws CustomerException {
+		DVC = new DriverDeliveryCustomer ("Sean", "0898989898", 11, 3);
 		
-		
-		
+	}
 	
+	@Test (expected = CustomerException.class) 
+	public void testConstructorForLocationYMoreThan10() throws CustomerException {
+		DVC = new DriverDeliveryCustomer ("Sean", "0898989898", 4, 11);
 		
+	}
+	
+	@Test 
+	public void testGetMobileNumber() throws CustomerException {
+		assertEquals("0402024300", DVC.getMobileNumber()); 
 		
+	}
+	
+	@Test 
+	public void testGetCustomerType() throws CustomerException {
+		assertEquals("Pick Up", PUC.getCustomerType()); 
+		assertEquals("Driver Delivery", DVC.getCustomerType()); 
+		assertEquals("Drone Delivery", DNC.getCustomerType()); 
+		
+	}
+	
+	@Test 
+	public void testGetLocationX() throws CustomerException {
+		assertEquals(4, DVC.getLocationX()); 
+		
+	}
+	
+	@Test 
+	public void testGetLocationY() throws CustomerException {
+		assertEquals(3, DVC.getLocationY()); 
+		
+	}
+		
+	@Test 
+	public void testGetCustomerNameForDifferentTypeOfCustomer() throws CustomerException {
+		assertEquals("Sean", DVC.getName()); 
+		assertEquals("Gary", DNC.getName()); 
+		assertEquals("Kelok", PUC.getName()); 
+		
+	}
 
+	@Test 
+	public void testGetDeliveryDistanceForDroneCustomer() throws CustomerException {
+		assertEquals(5, DNC.getDeliveryDistance(), 0); 
+		
+	}
+	
+	@Test 
+	public void testGetDeliveryDistanceForDriverCustomer() throws CustomerException {
+		assertEquals(5, DVC.getDeliveryDistance(), 0); 
+		
+	}
+	
+	@Test
+	public void testGetDeliveryDistanceForPickUpCustomer() throws CustomerException {
+		assertEquals(0, PUC.getDeliveryDistance(), 0);
+		
+	}
 }
 

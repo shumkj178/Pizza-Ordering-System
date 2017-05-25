@@ -16,6 +16,8 @@ import asgn2Exceptions.PizzaException;
  *
  */
 public class MargheritaPizza extends Pizza {
+	private int quantity; 
+	private LocalTime orderTime; 
 
 	
 	/**

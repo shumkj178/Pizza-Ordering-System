@@ -7,4 +7,5 @@ package asgn2Tests;
  */
 public class LogHandlerCustomerTests {
 	// TO DO
+	
 }

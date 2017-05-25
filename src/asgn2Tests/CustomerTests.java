@@ -91,6 +91,20 @@ public class CustomerTests {
 	}
 	
 	@Test 
+	public void testLocationXForPickUpCustomerShouldBeZero() throws CustomerException {
+		PUC = new PickUpCustomer("Kelok", "0423241145", 2, 0); 
+		assertEquals(0, PUC.getLocationX());
+		
+	}
+	
+	@Test 
+	public void testLocationYForPickUpCustomerShouldBeZero() throws CustomerException {
+		PUC = new PickUpCustomer("Kelok", "0423241145", 0, 2); 
+		assertEquals(0, PUC.getLocationY());
+		
+	}
+	
+	@Test 
 	public void testGetMobileNumber() throws CustomerException {
 		assertEquals("0402024300", DVC.getMobileNumber()); 
 		
@@ -141,5 +155,7 @@ public class CustomerTests {
 		assertEquals(0, PUC.getDeliveryDistance(), 0);
 		
 	}
+
+	
 }
 

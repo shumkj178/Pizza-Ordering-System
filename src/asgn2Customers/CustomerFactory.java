@@ -46,9 +46,9 @@ public class CustomerFactory {
 
 		switch (customerCode.toUpperCase()) {
 		case "PUC":
-			return new DriverDeliveryCustomer(name, mobileNumber, locationX, locationY);
+			return new PickUpCustomer(name, mobileNumber, locationX, locationY);
 		case "DNC":
-			return new DriverDeliveryCustomer(name, mobileNumber, locationX, locationY);
+			return new DroneDeliveryCustomer(name, mobileNumber, locationX, locationY);
 		case "DVC":
 			return new DriverDeliveryCustomer(name, mobileNumber, locationX, locationY);
 		default:

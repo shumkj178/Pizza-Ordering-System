@@ -36,56 +36,62 @@ public class CustomerTests {
 	}
 	
 	@Test (expected = CustomerException.class)
-	public void testConstructorNameMoreThan20Digits() throws CustomerException {
+	public void testNameMoreThan20CharactersForConstructor() throws CustomerException {
 		DVC = new DriverDeliveryCustomer ("Uvuvwevwevwe Onyetenyevwe Ossas", "0214252252", 4, 3); 
 		
 	}
 	
+	@Test 
+	public void testNameIncludedBlankSpacesMoreThan20CharactersForConstructor() throws CustomerException {
+		DVC = new DriverDeliveryCustomer ("Onyetenyevwe Ossas   ", "0214252252", 4, 3); 
+		
+	}
+	
 	@Test (expected = CustomerException.class)
-	public void testConstructorNameForBlankSpace() throws CustomerException {
+	public void testNameForBlankSpaceForConstructor() throws CustomerException {
 		DVC = new DriverDeliveryCustomer (" ", "0898989898", 4, 3);
 		
 	}
 	
 	@Test (expected = CustomerException.class)
-	public void testConstructorNameForEmptyString() throws CustomerException {
+	public void testNameForEmptyStringForConstructor() throws CustomerException {
 		DVC = new DriverDeliveryCustomer ("", "0898989898", 4, 3);
 		
 	}
 	
 	@Test (expected = CustomerException.class)
-	public void testConstructorMobileNumberStartWithDigit1() throws CustomerException {
+	public void testMobileNumberStartWithDigit1ForConstructor() throws CustomerException {
 		DVC = new DriverDeliveryCustomer ("Sean", "1234567890", 4, 3);
 		
 	}
 		
 	@Test (expected = CustomerException.class)
-	public void testConstructorMobileNumberLessThan10Digits() throws CustomerException {
+	public void testMobileNumberLessThan10DigitsForConstructor() throws CustomerException {
 		DVC = new DriverDeliveryCustomer ("Sean", "023456789", 4, 3);
 			
 	}
 	
 	@Test (expected = CustomerException.class)
-	public void testConstructorMobileNumberMoreThan10Digits() throws CustomerException {
+	public void testMobileNumberMoreThan10DigitsForConstructor() throws CustomerException {
 		DVC = new DriverDeliveryCustomer ("Sean", "02345678910", 4, 3);
 			
 	}
 	
 	@Test (expected = CustomerException.class)
-	public void testConstructorMobileNumberWithSymbol() throws CustomerException {
+	public void testMobileNumberWithSymbolForConstructor() throws CustomerException {
 		DVC = new DriverDeliveryCustomer ("Sean", "0563832@4^", 4, 3);
 			
 	}
 	
 	
 	@Test (expected = CustomerException.class) 
-	public void testConstructorForLocationXMoreThan10() throws CustomerException {
+	public void testForLocationXMoreThan10ForConstructor() throws CustomerException {
 		DVC = new DriverDeliveryCustomer ("Sean", "0898989898", 11, 3);
 		
 	}
 	
 	@Test (expected = CustomerException.class) 
-	public void testConstructorForLocationYMoreThan10() throws CustomerException {
+	public void testForLocationYMoreThan10ForConstructor() throws CustomerException {
 		DVC = new DriverDeliveryCustomer ("Sean", "0898989898", 4, 11);
 		
 	}

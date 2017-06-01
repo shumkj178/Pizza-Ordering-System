@@ -17,6 +17,7 @@ public abstract class Customer {
 	int locationX;
 	int locationY;
 	String type;
+	String regexStr = "^[0-9]*$";
 
 	/**
 	 *  This class represents a customer of the Pizza Palace restaurant.  A detailed description of the class's fields
@@ -36,8 +37,6 @@ public abstract class Customer {
 	 * 
 	 */
 	public Customer(String name, String mobileNumber, int locationX, int locationY, String type) throws CustomerException{
-		// TO DO
-		String regexStr = "^[0-9]*$";
 		if (name.trim().isEmpty() || mobileNumber.trim().isEmpty()) {
 			throw new CustomerException("Name and mobile number cannot be empty!");
 		} else if (name.trim().length() > 20) {
@@ -59,7 +58,6 @@ public abstract class Customer {
 	 * @return The Customer's name.
 	 */
 	public final String getName(){
-		// TO DO
 		return name;
 	}
 	
@@ -68,7 +66,6 @@ public abstract class Customer {
 	 * @return The Customer's mobile number.
 	 */
 	public final String getMobileNumber(){
-		// TO DO
 		return mobileNumber;
 	}
 
@@ -78,7 +75,6 @@ public abstract class Customer {
 	 * @return A human understandable description of the Customer's type.
 	 */
 	public final String getCustomerType(){
-		// TO DO
 		return type;
 	}
 	
@@ -88,7 +84,6 @@ public abstract class Customer {
 	 * @return The Customer's X location
 	 */
 	public final int getLocationX(){
-		// TO DO
 		return locationX;
 	}
 
@@ -98,7 +93,6 @@ public abstract class Customer {
 	 * @return The Customer's Y location
 	 */
 	public final int getLocationY(){
-		// TO DO
 		return locationY;
 	}
 

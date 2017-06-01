@@ -44,7 +44,7 @@ public class CustomerFactory {
 	public static Customer getCustomer(String customerCode, String name, String mobileNumber, int locationX,
 			int locationY) throws CustomerException {
 
-		switch (customerCode.toUpperCase()) {
+		switch (customerCode.trim().toUpperCase()) {
 		case "PUC":
 			return new PickUpCustomer(name, mobileNumber, locationX, locationY);
 		case "DNC":
@@ -54,7 +54,5 @@ public class CustomerFactory {
 		default:
 			throw new CustomerException("Invalid customer code.");
 		}
-
-		// TO DO
 	}
 }

@@ -1,8 +1,11 @@
 package asgn2Restaurant;
 
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
 import asgn2Customers.Customer;
+import asgn2Customers.CustomerFactory;
 import asgn2Exceptions.CustomerException;
 import asgn2Exceptions.LogHandlerException;
 import asgn2Exceptions.PizzaException;
@@ -19,7 +22,8 @@ import asgn2Pizzas.Pizza;
  */
 public class LogHandler {
 	
-
+	static BufferedReader bufferedReader;
+	public static final String COMMA = ",";
 
 	/**
 	 * Returns an ArrayList of Customer objects from the information contained in the log file ordered as they appear in the log file.
@@ -30,7 +34,23 @@ public class LogHandler {
 	 * 
 	 */
 	public static ArrayList<Customer> populateCustomerDataset(String filename) throws CustomerException, LogHandlerException{
-		// TO DO
+		ArrayList<Customer> customerList;
+		
+		try {
+			customerList = new ArrayList<Customer>();
+			bufferedReader = new BufferedReader(new FileReader(filename));
+			String line = bufferedReader.readLine();
+			while(line != null) {
+				Customer customer = createCustomer(line);
+				customerList.add(customer);
+				line = bufferedReader.readLine();
+			}			
+			return customerList;
+		} catch (CustomerException ce) {
+			throw new CustomerException(ce.getMessage());
+		} catch (Exception e) {
+			throw new LogHandlerException(e.getMessage());
+		}
 	}		
 
 	/**
@@ -55,7 +75,20 @@ public class LogHandler {
 	 * @throws LogHandlerException - If there was a problem parsing the line from the log file.
 	 */
 	public static Customer createCustomer(String line) throws CustomerException, LogHandlerException{
-		// TO DO
+		try {
+			String[] lineArray = line.split(COMMA);
+			String name = lineArray[2];
+			String mobileNumber = lineArray[3];
+			String customerCode = lineArray[4];
+			int locationX = Integer.parseInt(lineArray[5]);
+			int locationY = Integer.parseInt(lineArray[6]);
+			
+			return CustomerFactory.getCustomer(customerCode, name, mobileNumber, locationX, locationY);
+		} catch (CustomerException ce) {
+			throw new CustomerException(ce.getMessage());
+		} catch (Exception ce) {
+			throw new LogHandlerException(ce.getMessage());
+		}
 	}
 	
 	/**

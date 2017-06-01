@@ -71,6 +71,9 @@ public abstract class Pizza {
 		} else if (deliveryTime.isAfter(orderTime.plusHours(1))) {
 			throw new PizzaException("You should receive your order within an hour after your order time.");
 			
+		} else if (deliveryTime.isBefore(orderTime)) {
+			throw new PizzaException("Order will not be delivered until you make an order"); 
+			
 		}
 
 		this.quantity = quantity;

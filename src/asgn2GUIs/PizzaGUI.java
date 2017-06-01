@@ -259,6 +259,8 @@ public class PizzaGUI extends JFrame implements Runnable, ActionListener {
 			chooseFileBtn.setText("Choose File");
 			chooseFileBtn.setEnabled(true);
 			tabPane.setEnabled(false);
+			distanceField.setText("Total Distance Travelled");
+			profitField.setText("Total Profit Made");
 			resetBtn.setEnabled(false);
 		} else if (src == calDistanceBtn) {
 			if (file != null) {

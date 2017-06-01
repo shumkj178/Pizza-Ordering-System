@@ -16,8 +16,10 @@ import asgn2Exceptions.PizzaException;
  *
  */
 public class MargheritaPizza extends Pizza {
-	private int quantity; 
-	private LocalTime orderTime; 
+	
+	int quantity; 
+	LocalTime orderTime; 
+	LocalTime deliveryTime; 
 
 	
 	/**
@@ -38,6 +40,7 @@ public class MargheritaPizza extends Pizza {
 	 */
 	public MargheritaPizza(int quantity, LocalTime orderTime, LocalTime deliveryTime) throws PizzaException {
 		// TO DO
+		super(quantity, orderTime, deliveryTime, "Margherita", 8.0);
 	}
 
 }

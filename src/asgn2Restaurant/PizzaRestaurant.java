@@ -159,6 +159,7 @@ public class PizzaRestaurant {
 		for (Customer customer : customers) {
 			totalDeliveryDistance += customer.getDeliveryDistance();
 		}
+		
 		return totalDeliveryDistance;
 	}
 
@@ -174,6 +175,7 @@ public class PizzaRestaurant {
 		for (Pizza pizza : pizzas) {
 			totalProfit += pizza.getOrderProfit();
 		}
+		
 		return totalProfit;
 	}
 

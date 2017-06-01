@@ -29,13 +29,11 @@ public class PizzaTests {
 	MeatLoversPizza meatLoversPizzaTest;
 	LocalTime openTime = LocalTime.parse("19:00:00");
 	LocalTime closeTime = LocalTime.parse("23:00:00");
-	LocalTime orderTime;
-	LocalTime deliveryTime;
+	LocalTime orderTime = LocalTime.parse("20:00:00");;
+	LocalTime deliveryTime = LocalTime.parse("20:15:00");
 	
 	@Before
 	public void setUp() throws PizzaException {
-		orderTime = LocalTime.parse("20:00:00");
-		deliveryTime = LocalTime.parse("20:15:00");
 		
 		//these instances are declared for testing Pizza class functions
 		meatLoversPizza = new MeatLoversPizza(2, orderTime, deliveryTime);
@@ -141,24 +139,51 @@ public class PizzaTests {
 	}
 	
 	@Test
-	public void testContainsToppingForMeatLoversPizza() {
+	public void testAllToppingsForMeatLoversPizza() {
 		assertTrue(meatLoversPizza.containsTopping(PizzaTopping.CHEESE));
 		assertTrue(meatLoversPizza.containsTopping(PizzaTopping.BACON));
-		assertFalse(meatLoversPizza.containsTopping(PizzaTopping.MUSHROOM));
+		assertTrue(meatLoversPizza.containsTopping(PizzaTopping.SALAMI));
+		assertTrue(meatLoversPizza.containsTopping(PizzaTopping.PEPPERONI));
+		assertTrue(meatLoversPizza.containsTopping(PizzaTopping.TOMATO));
 	}
 	
 	@Test
-	public void testContainsToppingForVegetarianPizza() {
+	public void testAllToppingsForVegetarianPizza() {
 		assertTrue(vegetarianPizza.containsTopping(PizzaTopping.EGGPLANT));
 		assertTrue(vegetarianPizza.containsTopping(PizzaTopping.CAPSICUM));
-		assertFalse(vegetarianPizza.containsTopping(PizzaTopping.BACON));
+		assertTrue(vegetarianPizza.containsTopping(PizzaTopping.TOMATO));
+		assertTrue(vegetarianPizza.containsTopping(PizzaTopping.CHEESE));
+		assertTrue(vegetarianPizza.containsTopping(PizzaTopping.MUSHROOM));
 	}
 	
 	@Test
-	public void testContainsToppingForMargheritaPizza() {
+	public void testAllToppingsForMargheritaPizza() {
 		assertTrue(margheritaPizza.containsTopping(PizzaTopping.TOMATO));
 		assertTrue(margheritaPizza.containsTopping(PizzaTopping.CHEESE));
+	}
+	
+	@Test
+	public void testNonToppingsForMeatLoversPizza() {
+		assertFalse(meatLoversPizza.containsTopping(PizzaTopping.CAPSICUM));
+		assertFalse(meatLoversPizza.containsTopping(PizzaTopping.MUSHROOM));
+		assertFalse(meatLoversPizza.containsTopping(PizzaTopping.EGGPLANT));
+	}
+	
+	@Test
+	public void testNonToppingsForVegetarianPizza() {
+		assertFalse(vegetarianPizza.containsTopping(PizzaTopping.BACON));
+		assertFalse(vegetarianPizza.containsTopping(PizzaTopping.PEPPERONI));
+		assertFalse(vegetarianPizza.containsTopping(PizzaTopping.SALAMI));
+	}
+	
+	@Test
+	public void testNonToppingsForMargheritaPizza() {
 		assertFalse(margheritaPizza.containsTopping(PizzaTopping.BACON));
+		assertFalse(margheritaPizza.containsTopping(PizzaTopping.PEPPERONI));
+		assertFalse(margheritaPizza.containsTopping(PizzaTopping.SALAMI));
+		assertFalse(margheritaPizza.containsTopping(PizzaTopping.CAPSICUM));
+		assertFalse(margheritaPizza.containsTopping(PizzaTopping.MUSHROOM));
+		assertFalse(margheritaPizza.containsTopping(PizzaTopping.EGGPLANT));
 	}
 	
 	@Test

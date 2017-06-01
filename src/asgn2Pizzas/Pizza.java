@@ -77,7 +77,7 @@ public abstract class Pizza {
 		this.orderTime = orderTime;
 		this.deliveryTime = deliveryTime;
 		this.type = type;
-		this.price = 0;
+		this.price = price;
 
 		topping = new ArrayList<PizzaTopping>();
 		switch (type) {
@@ -103,6 +103,8 @@ public abstract class Pizza {
 
 			break;
 		}
+		
+		
 
 	}
 

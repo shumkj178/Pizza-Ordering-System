@@ -116,6 +116,7 @@ public abstract class Pizza {
 		// TO DO
 		for (PizzaTopping pizzaTopping : topping) {
 			cost += pizzaTopping.getCost();
+			
 		}
 
 	}
@@ -127,6 +128,7 @@ public abstract class Pizza {
 	 */
 	public final double getCostPerPizza() {
 		// TO DO
+		calculateCostPerPizza(); 
 		return cost;
 
 	}
@@ -151,7 +153,7 @@ public abstract class Pizza {
 	 */
 	public final double getOrderCost() {
 		// TO DO
-		return (cost * quantity);
+		return (getCostPerPizza() * quantity);
 
 	}
 
@@ -164,7 +166,7 @@ public abstract class Pizza {
 	 */
 	public final double getOrderPrice() {
 		// TO DO
-		return (price * quantity);
+		return (getPricePerPizza() * quantity);
 
 	}
 

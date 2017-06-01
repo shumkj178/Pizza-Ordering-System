@@ -56,7 +56,7 @@ public abstract class Pizza {
 		LocalTime openTime = LocalTime.parse("19:00:00");
 		LocalTime closeTime = LocalTime.parse("23:00:00");
 
-		if (quantity == 0) {
+		if (quantity <= 0) {
 			throw new PizzaException("You should order at least a pizza");
 
 		} else if (quantity > 10) {
@@ -68,13 +68,16 @@ public abstract class Pizza {
 		} else if (deliveryTime.isBefore(orderTime.plusMinutes(10))) {
 			throw new PizzaException("Your pizza is not ready yet");
 
+		} else if (deliveryTime.isAfter(orderTime.plusHours(1))) {
+			throw new PizzaException("You should receive your order within an hour after your order time.");
+			
 		}
 
 		this.quantity = quantity;
 		this.orderTime = orderTime;
 		this.deliveryTime = deliveryTime;
 		this.type = type;
-		this.price = price;
+		this.price = 0;
 
 		topping = new ArrayList<PizzaTopping>();
 		switch (type) {

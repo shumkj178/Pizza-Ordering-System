@@ -80,7 +80,7 @@ public class PizzaTests {
 	
 	@Test (expected = PizzaException.class)
 	public void testCreatePizzaInstanceWhenDeliveryTimeIsOneHourAfterOrderTime() throws PizzaException {
-		meatLoversPizzaTest = new MeatLoversPizza(1, orderTime, orderTime.plusHours(1));
+		meatLoversPizzaTest = new MeatLoversPizza(1, orderTime, orderTime.plusMinutes(61));
 	}
 	
 	@Test (expected = PizzaException.class)
@@ -100,9 +100,6 @@ public class PizzaTests {
 	
 	@Test
 	public void testCalculateCostPerPizzaForAllPizzaTypes() throws PizzaException {
-		meatLoversPizza.calculateCostPerPizza();
-		vegetarianPizza.calculateCostPerPizza();
-		margheritaPizza.calculateCostPerPizza();
 		assertEquals(5.0, meatLoversPizza.getCostPerPizza(), 0.0);
 		assertEquals(5.5, vegetarianPizza.getCostPerPizza(), 0.0);
 		assertEquals(1.5, margheritaPizza.getCostPerPizza(), 0.0);
@@ -110,9 +107,6 @@ public class PizzaTests {
 	
 	@Test
 	public void testGetCostPerPizzaForAllPizzaTypes() throws PizzaException {
-		meatLoversPizza.calculateCostPerPizza();
-		vegetarianPizza.calculateCostPerPizza();
-		margheritaPizza.calculateCostPerPizza();
 		assertEquals(5.0, meatLoversPizza.getCostPerPizza(), 0.0);
 		assertEquals(5.5, vegetarianPizza.getCostPerPizza(), 0.0);
 		assertEquals(1.5, margheritaPizza.getCostPerPizza(), 0.0);
@@ -127,9 +121,6 @@ public class PizzaTests {
 	
 	@Test
 	public void testGetOrderCostForAllPizzaTypes() {
-		meatLoversPizza.calculateCostPerPizza();
-		vegetarianPizza.calculateCostPerPizza();
-		margheritaPizza.calculateCostPerPizza();
 		assertEquals(10.0, meatLoversPizza.getOrderCost(), 0.0);
 		assertEquals(22.0, vegetarianPizza.getOrderCost(), 0.0);
 		assertEquals(4.5, margheritaPizza.getOrderCost(), 0.0);
@@ -144,9 +135,6 @@ public class PizzaTests {
 	
 	@Test
 	public void testGetOrderProfitForAllPizzaTypes() {
-		meatLoversPizza.calculateCostPerPizza();
-		vegetarianPizza.calculateCostPerPizza();
-		margheritaPizza.calculateCostPerPizza();
 		assertEquals(14.0, meatLoversPizza.getOrderProfit(), 0.0);
 		assertEquals(18.0, vegetarianPizza.getOrderProfit(), 0.0);
 		assertEquals(19.5, margheritaPizza.getOrderProfit(), 0.0);

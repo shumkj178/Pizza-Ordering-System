@@ -59,7 +59,7 @@ public class PizzaFactoryTests {
 	
 	@Test
 	public void testGetPizzaUsingCorrectMeatLoversPizzaCodeInLowerCase() throws PizzaException {
-		pizza = PizzaFactory.getPizza("pml", 1, orderTime, deliveryTime);
+		pizza = PizzaFactory.getPizza("pzl", 1, orderTime, deliveryTime);
 		assertEquals(MeatLoversPizza.class, pizza.getClass());
 	}
 	
@@ -77,17 +77,17 @@ public class PizzaFactoryTests {
 	
 	@Test
 	public void testGetPizzaUsingCorrectMeatLoversPizzaCodeInUpperCase() throws PizzaException {
-		pizza = PizzaFactory.getPizza("PML", 1, orderTime, deliveryTime);
+		pizza = PizzaFactory.getPizza("PZL", 1, orderTime, deliveryTime);
 		assertEquals(MeatLoversPizza.class, pizza.getClass());
 	}
 	
 	@Test
 	public void testGetPizzaUsingPizzaCodesFollowByBlankSpaces() throws PizzaException {
-		pizza = PizzaFactory.getPizza("PZM ", 1, orderTime, deliveryTime);
+		pizza = PizzaFactory.getPizza("PZL ", 1, orderTime, deliveryTime);
 	}
 	
 	@Test (expected = PizzaException.class)
 	public void testGetPizzaUsingPizzaCodesWithBlankSpacesInBetween() throws PizzaException {
-		PizzaFactory.getPizza("PZ M", 1, orderTime, deliveryTime);
+		PizzaFactory.getPizza("PZ L", 1, orderTime, deliveryTime);
 	}
 }

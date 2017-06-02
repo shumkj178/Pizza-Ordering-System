@@ -12,10 +12,9 @@ import asgn2Restaurant.LogHandler;
  * A class that tests the methods relating to the creation of Customer objects
  * in the asgn2Restaurant.LogHander class.
  *
- * @author Person A
+ * @author Veng Sie Choy
  */
 public class LogHandlerCustomerTests {
-	// TO DO
 	final static String FILE_1 = Paths.get("logs/20170102.txt").toString();
 	final static String FILE_2 = Paths.get("logs/unit-test-logs/customer/wrong-file-type.pdf").toString();
 	final static String FILE_3 = Paths.get("logs/unit-test-logs/customer/missing-data.txt").toString();

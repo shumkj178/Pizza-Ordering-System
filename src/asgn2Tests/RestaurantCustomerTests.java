@@ -80,7 +80,7 @@ public class RestaurantCustomerTests {
 		customerRestaurant.getCustomerByIndex(105);
 
 	}
-	
+
 	@Test
 	public void testForResetDetailsOfCustomer() {
 		customerRestaurant.resetDetails();

@@ -121,9 +121,9 @@ public class PizzaGUI extends JFrame implements Runnable, ActionListener {
 		tabPane = new JTabbedPane();
 		tabPane.setPreferredSize(mainPanel.getSize());
 		tabPanel = createPanelForTabPane(Color.WHITE);
-		tabPane.addTab("Order Details", tabPanel);
+		tabPane.addTab("Customer Details", tabPanel);
 		tab2Panel = createPanelForTabPane(Color.WHITE);
-		tabPane.addTab("Customer Details", tab2Panel);
+		tabPane.addTab("Order Details", tab2Panel);
 		tabPane.setEnabled(false);
 		mainPanel.add(tabPane);
 
@@ -201,7 +201,7 @@ public class PizzaGUI extends JFrame implements Runnable, ActionListener {
 						chooseFileBtn.setEnabled(false);
 					}
 				} catch (Exception e) {
-					JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(this, e.getMessage(), "Pizza Place", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		}

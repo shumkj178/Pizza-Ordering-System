@@ -42,7 +42,7 @@ public class PizzaFactory {
 	public static Pizza getPizza(String pizzaCode, int quantity, LocalTime orderTime, LocalTime deliveryTime)
 			throws PizzaException {
 		// TO DO
-		switch (pizzaCode.toUpperCase()) {
+		switch (pizzaCode.trim().toUpperCase()) {
 		case "PZM":
 			return new MargheritaPizza(quantity, orderTime, deliveryTime);
 		case "PZV":

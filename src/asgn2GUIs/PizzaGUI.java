@@ -52,6 +52,7 @@ public class PizzaGUI extends JFrame implements Runnable, ActionListener {
 
 	private JFileChooser fileChooser;
 
+	// arrays for tables' headers
 	String[] customerColumnHeaders = new String[] { "Customer Name", "Mobile Number", "Customer Type", "Location-X",
 			"Location-Y", "Delivery Distance" };
 	String[] orderColumnHeaders = new String[] { "Pizza Type", "Quantity", "Order Price", "Order Cost",

@@ -44,7 +44,9 @@ public class MeatLoversPizza extends Pizza {
 	 * @param deliveryTime
 	 *            - The time that the pizza was delivered to the customer
 	 * @throws PizzaException
-	 *             if supplied parameters are invalid
+	 *             if supplied parameters are invalid Eg: quantity is smaller
+	 *             than 0 or greater than 10, orderTime is before openTime,
+	 *             orderTime is after closeTime etc
 	 *
 	 */
 	public MeatLoversPizza(int quantity, LocalTime orderTime, LocalTime deliveryTime) throws PizzaException {

@@ -46,7 +46,7 @@ public class PizzaGUI extends JFrame implements Runnable, ActionListener {
 	 * Main UI Elements
 	 */
 	private JPanel mainPanel, tabPanel, tab2Panel;
-	private JButton chooseFileBtn, resetBtn, calDistanceBtn, calProfitBtn;
+	private JButton chooseFileBtn, resetBtn, calDistanceBtn, calProfitBtn, displayTablesBtn;
 	private JTextField distanceField, profitField;
 	private JTabbedPane tabPane;
 
@@ -87,7 +87,7 @@ public class PizzaGUI extends JFrame implements Runnable, ActionListener {
 		this.getContentPane().add(mainPanel);
 
 		chooseFileBtn = createButton("Choose File");
-		chooseFileBtn.setLocation(800, 500);
+		chooseFileBtn.setLocation(800, 455);
 		this.getContentPane().add(chooseFileBtn);
 
 		calDistanceBtn = createButton("Calculate Total Distance");
@@ -99,9 +99,14 @@ public class PizzaGUI extends JFrame implements Runnable, ActionListener {
 		this.getContentPane().add(calProfitBtn);
 
 		resetBtn = createButton("Reset");
-		resetBtn.setLocation(800, 580);
+		resetBtn.setLocation(800, 595);
 		resetBtn.setEnabled(false);
 		this.getContentPane().add(resetBtn);
+
+		displayTablesBtn = createButton("Display Tables");
+		displayTablesBtn.setLocation(800, 525);
+		displayTablesBtn.setEnabled(false);
+		this.getContentPane().add(displayTablesBtn);
 
 		distanceField = createTextField("Total Distance Travelled");
 		distanceField.setLocation(80, 580);
@@ -129,6 +134,7 @@ public class PizzaGUI extends JFrame implements Runnable, ActionListener {
 		tab2Panel.add(orderScrollPane);
 
 		chooseFileBtn.addActionListener(this);
+		displayTablesBtn.addActionListener(this);
 		calDistanceBtn.addActionListener(this);
 		calProfitBtn.addActionListener(this);
 		resetBtn.addActionListener(this);
@@ -137,7 +143,7 @@ public class PizzaGUI extends JFrame implements Runnable, ActionListener {
 
 	private JPanel createPanel(Color c) {
 		JPanel temp = new JPanel();
-		temp.setSize(1070, 480);
+		temp.setSize(1070, 450);
 		temp.setBackground(c);
 		return temp;
 	}
@@ -158,6 +164,7 @@ public class PizzaGUI extends JFrame implements Runnable, ActionListener {
 	private JTextField createTextField(String fieldText) {
 		JTextField temp = new JTextField(fieldText);
 		temp.setHorizontalAlignment(JTextField.CENTER);
+		temp.setFont(temp.getFont().deriveFont(15f));
 		temp.setSize(220, 60);
 		return temp;
 	}
@@ -189,87 +196,95 @@ public class PizzaGUI extends JFrame implements Runnable, ActionListener {
 					if (restaurant.processLog(file.getPath())) {
 						JOptionPane.showMessageDialog(this, "Log file loaded successfully");
 						chooseFileBtn.setText("Current File - " + file.getName());
-						tabPane.setEnabled(true);
 						resetBtn.setEnabled(true);
+						displayTablesBtn.setEnabled(true);
 						chooseFileBtn.setEnabled(false);
-
-						String[][] customerList = new String[restaurant.getNumCustomerOrders()][6];
-						for (int i = 0; i < restaurant.getNumCustomerOrders(); i++) {
-							try {
-								customerList[i][0] = restaurant.getCustomerByIndex(i).getName();
-								customerList[i][1] = restaurant.getCustomerByIndex(i).getMobileNumber();
-								customerList[i][2] = restaurant.getCustomerByIndex(i).getCustomerType();
-								customerList[i][3] = Integer.toString(restaurant.getCustomerByIndex(i).getLocationX());
-								customerList[i][4] = Integer.toString(restaurant.getCustomerByIndex(i).getLocationY());
-								customerList[i][5] = String.format("%.2f",
-										restaurant.getCustomerByIndex(i).getDeliveryDistance());
-							} catch (CustomerException e) {
-								JOptionPane.showMessageDialog(this, e.getMessage(), "Pizza Place",
-										JOptionPane.ERROR_MESSAGE);
-							}
-						}
-
-						customerModel = new DefaultTableModel(customerList, customerColumnHeaders) {
-							private static final long serialVersionUID = 1L;
-
-							@Override
-							public boolean isCellEditable(int row, int column) {
-								return false;
-							}
-						};
-						customerTable = new JTable(customerModel);
-						customerScrollPane.setViewportView(customerTable);
-						customerTable.setPreferredScrollableViewportSize(tabPanel.getPreferredSize());
-
-						String[][] orderList = new String[restaurant.getNumPizzaOrders()][5];
-						for (int i = 0; i < restaurant.getNumCustomerOrders(); i++) {
-							try {
-								orderList[i][0] = restaurant.getPizzaByIndex(i).getPizzaType();
-								orderList[i][1] = Integer.toString(restaurant.getPizzaByIndex(i).getQuantity());
-								orderList[i][2] = String.format("%.2f", restaurant.getPizzaByIndex(i).getOrderPrice());
-								orderList[i][3] = String.format("%.2f", restaurant.getPizzaByIndex(i).getOrderCost());
-								orderList[i][4] = String.format("%.2f", restaurant.getPizzaByIndex(i).getOrderProfit());
-							} catch (PizzaException e) {
-								JOptionPane.showMessageDialog(this, e.getMessage(), "Pizza Place",
-										JOptionPane.ERROR_MESSAGE);
-							}
-						}
-
-						orderModel = new DefaultTableModel(orderList, orderColumnHeaders) {
-							private static final long serialVersionUID = 1L;
-
-							@Override
-							public boolean isCellEditable(int row, int column) {
-								return false;
-							}
-						};
-						orderTable = new JTable(orderModel);
-						orderScrollPane.setViewportView(orderTable);
-						orderTable.setPreferredScrollableViewportSize(tab2Panel.getPreferredSize());
 					}
 				} catch (Exception e) {
 					JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
-		} else if (src == resetBtn) {
+		}
+		if (src == displayTablesBtn) {
+			if (file != null) {
+				tabPane.setEnabled(true);
+				String[][] customerList = new String[restaurant.getNumCustomerOrders()][6];
+				for (int i = 0; i < restaurant.getNumCustomerOrders(); i++) {
+					try {
+						customerList[i][0] = restaurant.getCustomerByIndex(i).getName();
+						customerList[i][1] = restaurant.getCustomerByIndex(i).getMobileNumber();
+						customerList[i][2] = restaurant.getCustomerByIndex(i).getCustomerType();
+						customerList[i][3] = Integer.toString(restaurant.getCustomerByIndex(i).getLocationX());
+						customerList[i][4] = Integer.toString(restaurant.getCustomerByIndex(i).getLocationY());
+						customerList[i][5] = String.format("%.2f",
+								restaurant.getCustomerByIndex(i).getDeliveryDistance());
+					} catch (CustomerException e) {
+						JOptionPane.showMessageDialog(this, e.getMessage(), "Pizza Place", JOptionPane.ERROR_MESSAGE);
+					}
+				}
+
+				customerModel = new DefaultTableModel(customerList, customerColumnHeaders) {
+					private static final long serialVersionUID = 1L;
+
+					@Override
+					public boolean isCellEditable(int row, int column) {
+						return false;
+					}
+				};
+				customerTable = new JTable(customerModel);
+				customerScrollPane.setViewportView(customerTable);
+				customerTable.setPreferredScrollableViewportSize(tabPanel.getPreferredSize());
+
+				String[][] orderList = new String[restaurant.getNumPizzaOrders()][5];
+				for (int i = 0; i < restaurant.getNumCustomerOrders(); i++) {
+					try {
+						orderList[i][0] = restaurant.getPizzaByIndex(i).getPizzaType();
+						orderList[i][1] = Integer.toString(restaurant.getPizzaByIndex(i).getQuantity());
+						orderList[i][2] = String.format("%.2f", restaurant.getPizzaByIndex(i).getOrderPrice());
+						orderList[i][3] = String.format("%.2f", restaurant.getPizzaByIndex(i).getOrderCost());
+						orderList[i][4] = String.format("%.2f", restaurant.getPizzaByIndex(i).getOrderProfit());
+					} catch (PizzaException e) {
+						JOptionPane.showMessageDialog(this, e.getMessage(), "Pizza Place", JOptionPane.ERROR_MESSAGE);
+					}
+				}
+
+				orderModel = new DefaultTableModel(orderList, orderColumnHeaders) {
+					private static final long serialVersionUID = 1L;
+
+					@Override
+					public boolean isCellEditable(int row, int column) {
+						return false;
+					}
+				};
+				orderTable = new JTable(orderModel);
+				orderScrollPane.setViewportView(orderTable);
+				orderTable.setPreferredScrollableViewportSize(tab2Panel.getPreferredSize());
+			} else {
+				JOptionPane.showMessageDialog(this, "No File Selected", "Pizza Place", JOptionPane.ERROR_MESSAGE);
+			}
+		}
+		if (src == resetBtn) {
 			restaurant.resetDetails();
 			file = null;
 			customerScrollPane.setViewportView(null);
 			orderScrollPane.setViewportView(null);
 			chooseFileBtn.setText("Choose File");
 			chooseFileBtn.setEnabled(true);
+			displayTablesBtn.setEnabled(false);
 			tabPane.setEnabled(false);
 			distanceField.setText("Total Distance Travelled");
 			profitField.setText("Total Profit Made");
 			resetBtn.setEnabled(false);
-		} else if (src == calDistanceBtn) {
+		}
+		if (src == calDistanceBtn) {
 			if (file != null) {
 				distanceField.setText(
 						"Total Delivery Distance: " + String.format("%.2f", restaurant.getTotalDeliveryDistance()));
 			} else {
 				JOptionPane.showMessageDialog(this, "No File Selected", "Pizza Place", JOptionPane.ERROR_MESSAGE);
 			}
-		} else if (src == calProfitBtn) {
+		}
+		if (src == calProfitBtn) {
 			if (file != null) {
 				profitField.setText("Total Profit Made: $" + String.format("%.2f", restaurant.getTotalProfit()));
 			} else {

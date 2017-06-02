@@ -8,7 +8,7 @@ import asgn2Exceptions.CustomerException;
  * valid customer codes outlined in Section 5.3 of the Assignment Specification.
  * Any other code will throw a CustomerException.
  * 
- * @author Person B
+ * @author Khar Jun Shum
  *
  */
 

@@ -1,26 +1,26 @@
 package asgn2GUIs;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
-
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.text.DecimalFormat;
 
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.DefaultCaret;
 
-import asgn2Customers.Customer;
 import asgn2Exceptions.CustomerException;
 import asgn2Exceptions.PizzaException;
-import asgn2Pizzas.Pizza;
 import asgn2Restaurant.PizzaRestaurant;
-
-import javax.swing.JFrame;
-
-import java.awt.*;
-import javax.swing.*;
 
 /**
  * This class is the graphical user interface for the rest of the system.
@@ -33,7 +33,7 @@ import javax.swing.*;
  * use this class and asgn2Wizards.PizzaWizard to test your system as a whole
  * 
  * 
- * @author Person A and Person B
+ * @author Veng Sie Choy and Khar Jun Shum
  *
  */
 public class PizzaGUI extends JFrame implements Runnable, ActionListener {

@@ -47,7 +47,7 @@ public class PizzaFactory {
 			return new MargheritaPizza(quantity, orderTime, deliveryTime);
 		case "PZV":
 			return new VegetarianPizza(quantity, orderTime, deliveryTime);
-		case "PML":
+		case "PZL":
 			return new MeatLoversPizza(quantity, orderTime, deliveryTime);
 		default:
 			throw new PizzaException("Invalid pizza code.");

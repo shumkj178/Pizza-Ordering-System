@@ -47,7 +47,9 @@ public abstract class Pizza {
 	 * @param price
 	 *            - The price that the pizza is sold to the customer
 	 * @throws PizzaException
-	 *             if supplied parameters are invalid
+	 *             if supplied parameters are invalid Eg: quantity is smaller
+	 *             than 0 or greater than 10, orderTime is before openTime,
+	 *             orderTime is after closeTime etc
 	 * 
 	 */
 	public Pizza(int quantity, LocalTime orderTime, LocalTime deliveryTime, String type, double price)

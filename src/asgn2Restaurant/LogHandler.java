@@ -41,7 +41,7 @@ public class LogHandler {
 	 *             (passed by another class).
 	 * @throws LogHandlerException
 	 *             If there was a problem with the log file not related to the
-	 *             semantic errors above
+	 *             semantic errors above Eg: file format is not .txt
 	 * 
 	 */
 	public static ArrayList<Customer> populateCustomerDataset(String filename)
@@ -80,7 +80,7 @@ public class LogHandler {
 	 *             another class).
 	 * @throws LogHandlerException
 	 *             If there was a problem with the log file not related to the
-	 *             semantic errors above
+	 *             semantic errors above Eg: file format is not .txt
 	 * 
 	 */
 	public static ArrayList<Pizza> populatePizzaDataset(String filename) throws PizzaException, LogHandlerException {

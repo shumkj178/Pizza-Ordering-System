@@ -34,7 +34,7 @@ public abstract class Customer {
 	 * POST: All field values are set
 	 * 
 	 * @param name
-	 *            - The Customer's name
+	 *            - The customer's name
 	 * @param mobileNumber
 	 *            - The customer mobile number
 	 * @param locationX
@@ -44,9 +44,11 @@ public abstract class Customer {
 	 *            - The customer y location relative to the Pizza Palace
 	 *            Restaurant measured in units of 'blocks'
 	 * @param type
-	 *            - A human understandable description of this Customer type
+	 *            - A human understandable description of this customer type
 	 * @throws CustomerException
-	 *             if supplied parameters are invalid
+	 *             if supplied parameters are invalid Eg: Empty name,
+	 *             mobileNumber is not starting with 0, locationX and locationY
+	 *             is greater than 10
 	 * 
 	 */
 	public Customer(String name, String mobileNumber, int locationX, int locationY, String type)

@@ -36,7 +36,9 @@ public class DroneDeliveryCustomer extends Customer {
 	 *            The customer y location relative to the Pizza Palace
 	 *            Restaurant measured in units of 'blocks'
 	 * @throws CustomerException
-	 *             if supplied parameters are invalid
+	 *             if supplied parameters are invalid Eg: Empty name,
+	 *             mobileNumber is not starting with 0, locationX and locationY
+	 *             is greater than 10
 	 * 
 	 */
 	public DroneDeliveryCustomer(String name, String mobileNumber, int locationX, int locationY)

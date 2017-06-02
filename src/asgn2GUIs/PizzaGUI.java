@@ -150,7 +150,7 @@ public class PizzaGUI extends JFrame implements Runnable, ActionListener {
 
 	private JPanel createPanelForTabPane(Color c) {
 		JPanel temp = new JPanel();
-		temp.setPreferredSize(new Dimension(1050, 480));
+		temp.setPreferredSize(new Dimension(1050, 390));
 		temp.setBackground(c);
 		return temp;
 	}

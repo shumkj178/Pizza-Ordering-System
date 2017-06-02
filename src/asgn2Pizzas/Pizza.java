@@ -12,7 +12,7 @@ import asgn2Exceptions.PizzaException;
  * toppings. A description of the class's fields and their constraints is
  * provided in Section 5.1 of the Assignment Specification.
  * 
- * @author Person A
+ * @author Veng Sie Choy
  *
  */
 public abstract class Pizza {
@@ -52,7 +52,6 @@ public abstract class Pizza {
 	 */
 	public Pizza(int quantity, LocalTime orderTime, LocalTime deliveryTime, String type, double price)
 			throws PizzaException {
-		// TO DO
 		LocalTime openTime = LocalTime.parse("19:00:00");
 		LocalTime closeTime = LocalTime.parse("23:00:00");
 
@@ -70,10 +69,10 @@ public abstract class Pizza {
 
 		} else if (deliveryTime.isAfter(orderTime.plusHours(1))) {
 			throw new PizzaException("You should receive your order within an hour after your order time.");
-			
+
 		} else if (deliveryTime.isBefore(orderTime)) {
-			throw new PizzaException("Order will not be delivered until you make an order"); 
-			
+			throw new PizzaException("Order will not be delivered until you make an order");
+
 		}
 
 		this.quantity = quantity;
@@ -119,10 +118,9 @@ public abstract class Pizza {
 	 * POST: The cost field is set to sum of the Pizzas's toppings
 	 */
 	public final void calculateCostPerPizza() {
-		// TO DO
 		for (PizzaTopping pizzaTopping : topping) {
 			cost += pizzaTopping.getCost();
-			
+
 		}
 
 	}
@@ -133,9 +131,7 @@ public abstract class Pizza {
 	 * @return The amount that an individual pizza costs to make.
 	 */
 	public final double getCostPerPizza() {
-		// TO DO
 		return cost;
-
 	}
 
 	/**
@@ -144,9 +140,7 @@ public abstract class Pizza {
 	 * @return The amount that an individual pizza is sold to the customer.
 	 */
 	public final double getPricePerPizza() {
-		// TO DO
 		return price;
-
 	}
 
 	/**
@@ -157,9 +151,7 @@ public abstract class Pizza {
 	 *         account the type and quantity of pizzas.
 	 */
 	public final double getOrderCost() {
-		// TO DO
 		return (getCostPerPizza() * quantity);
-
 	}
 
 	/**
@@ -170,9 +162,7 @@ public abstract class Pizza {
 	 *         into account the type and quantity of pizzas.
 	 */
 	public final double getOrderPrice() {
-		// TO DO
 		return (getPricePerPizza() * quantity);
-
 	}
 
 	/**
@@ -183,9 +173,7 @@ public abstract class Pizza {
 	 *         the order price minus the order cost.
 	 */
 	public final double getOrderProfit() {
-		// TO DO
 		return getOrderPrice() - getOrderCost();
-
 	}
 
 	/**
@@ -197,11 +185,9 @@ public abstract class Pizza {
 	 *         topping and false otherwise.
 	 */
 	public final boolean containsTopping(PizzaTopping topping) {
-		// TO DO
 		if (this.topping.contains(topping)) {
 			return true;
 		}
-
 		return false;
 	}
 
@@ -211,7 +197,6 @@ public abstract class Pizza {
 	 * @return the quantity of pizzas ordered.
 	 */
 	public final int getQuantity() {
-		// TO DO
 		return quantity;
 	}
 
@@ -222,30 +207,31 @@ public abstract class Pizza {
 	 * @return A human understandable description of the Pizza's type.
 	 */
 	public final String getPizzaType() {
-		// TO DO
 		return type;
 	}
 
 	/**
-	 * Compares *this* Pizza object with an instance of an *other* Pizza object and returns true if  
-	 * if the two objects are equivalent, that is, if the values exposed by public methods are equal.
-	 * You do not need to test this method.
-	 *  
-	 * @return true if *this* Pizza object and the *other* Pizza object have the same values returned for 	
-	 * getCostPerPizza(), getOrderCost(), getOrderPrice(), getOrderProfit(), getPizzaType(), getPricePerPizza() 
-	 * and getQuantity().
-	 *   
+	 * Compares *this* Pizza object with an instance of an *other* Pizza object
+	 * and returns true if if the two objects are equivalent, that is, if the
+	 * values exposed by public methods are equal. You do not need to test this
+	 * method.
+	 * 
+	 * @return true if *this* Pizza object and the *other* Pizza object have the
+	 *         same values returned for getCostPerPizza(), getOrderCost(),
+	 *         getOrderPrice(), getOrderProfit(), getPizzaType(),
+	 *         getPricePerPizza() and getQuantity().
+	 * 
 	 */
 	@Override
-	public boolean equals(Object other){
+	public boolean equals(Object other) {
 		Pizza otherPizza = (Pizza) other;
-		return ((this.getCostPerPizza()) == (otherPizza.getCostPerPizza()) &&
-			(this.getOrderCost()) == (otherPizza.getOrderCost())) &&				
-			(this.getOrderPrice()) == (otherPizza.getOrderPrice()) &&
-			(this.getOrderProfit()) == (otherPizza.getOrderProfit()) &&
-			(this.getPizzaType() == (otherPizza.getPizzaType()) &&
-			(this.getPricePerPizza()) == (otherPizza.getPricePerPizza()) &&
-			(this.getQuantity()) == (otherPizza.getQuantity()));
+		return ((this.getCostPerPizza()) == (otherPizza.getCostPerPizza())
+				&& (this.getOrderCost()) == (otherPizza.getOrderCost()))
+				&& (this.getOrderPrice()) == (otherPizza.getOrderPrice())
+				&& (this.getOrderProfit()) == (otherPizza.getOrderProfit())
+				&& (this.getPizzaType() == (otherPizza.getPizzaType())
+						&& (this.getPricePerPizza()) == (otherPizza.getPricePerPizza())
+						&& (this.getQuantity()) == (otherPizza.getQuantity()));
 	}
 
 }

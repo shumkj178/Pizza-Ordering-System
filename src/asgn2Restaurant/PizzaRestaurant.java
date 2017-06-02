@@ -19,7 +19,7 @@ import asgn2Pizzas.Pizza;
  * Any exceptions raised by one of the methods called by this class should be
  * passed to asgn2GUIs.PizzaGUI so that it can be shown to the user.
  * 
- * @author Person A and Person B
+ * @author Veng Sie Choy and Khar Jun Shum
  *
  */
 public class PizzaRestaurant {
@@ -77,7 +77,6 @@ public class PizzaRestaurant {
 	 *
 	 */
 	public boolean processLog(String filename) throws CustomerException, PizzaException, LogHandlerException {
-		// TO DO
 		try {
 			customers = LogHandler.populateCustomerDataset(filename);
 			pizzas = LogHandler.populatePizzaDataset(filename);
@@ -120,7 +119,6 @@ public class PizzaRestaurant {
 	 *             if index is invalid.
 	 */
 	public Pizza getPizzaByIndex(int index) throws PizzaException {
-		// TO DO
 		if (index < 0 || index >= pizzas.size()) {
 			throw new PizzaException("Invalid index");
 		}
@@ -134,7 +132,6 @@ public class PizzaRestaurant {
 	 * @return the number of objects contained in the pizzas field.
 	 */
 	public int getNumPizzaOrders() {
-		// TO DO
 		return pizzas.size();
 	}
 
@@ -159,7 +156,7 @@ public class PizzaRestaurant {
 		for (Customer customer : customers) {
 			totalDeliveryDistance += customer.getDeliveryDistance();
 		}
-		
+
 		return totalDeliveryDistance;
 	}
 
@@ -170,12 +167,11 @@ public class PizzaRestaurant {
 	 *         field.
 	 */
 	public double getTotalProfit() {
-		// TO DO
 		double totalProfit = 0.0;
 		for (Pizza pizza : pizzas) {
 			totalProfit += pizza.getOrderProfit();
 		}
-		
+
 		return totalProfit;
 	}
 
@@ -189,7 +185,6 @@ public class PizzaRestaurant {
 	 * states
 	 */
 	public void resetDetails() {
-		// TO DO
 		customers.clear();
 		pizzas.clear();
 	}

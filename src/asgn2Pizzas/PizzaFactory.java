@@ -10,7 +10,7 @@ import asgn2Exceptions.PizzaException;
  * valid pizza codes outlined in Section 5.3 of the Assignment Specification.
  * Any other code will throw a PizzaException.
  * 
- * @author Person A
+ * @author Veng Sie Choy
  *
  */
 
@@ -41,7 +41,6 @@ public class PizzaFactory {
 	 */
 	public static Pizza getPizza(String pizzaCode, int quantity, LocalTime orderTime, LocalTime deliveryTime)
 			throws PizzaException {
-		// TO DO
 		switch (pizzaCode.trim().toUpperCase()) {
 		case "PZM":
 			return new MargheritaPizza(quantity, orderTime, deliveryTime);

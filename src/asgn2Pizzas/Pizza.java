@@ -106,9 +106,7 @@ public abstract class Pizza {
 
 			break;
 		}
-		
-		
-
+		calculateCostPerPizza();
 	}
 
 	/**
@@ -136,7 +134,6 @@ public abstract class Pizza {
 	 */
 	public final double getCostPerPizza() {
 		// TO DO
-		calculateCostPerPizza(); 
 		return cost;
 
 	}
